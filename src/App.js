@@ -1,20 +1,26 @@
-import { BrowserRouter, Route } from 'react-router-dom';
-import HomePage from './components/Views/HomePage';
-import SearchMoviesPage from './components/Views/SearchMoviesPage';
+import { Route, Switch } from 'react-router-dom';
+import HomePage from './components/Views/HomeView';
+import SearchMoviesPage from './components/Views/SearchMoviesView';
 import AppBar from './components/AppBar/AppBar';
+import MovieDetails from './components/Views/MovieDetailsView';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <AppBar />
+      <AppBar />
+      <Switch>
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/movies">
+
+        <Route path="/movies" exact>
           <SearchMoviesPage />
         </Route>
-      </BrowserRouter>
+
+        <Route>
+          <MovieDetails path="/movies/:movieId" />
+        </Route>
+      </Switch>
     </>
   );
 }

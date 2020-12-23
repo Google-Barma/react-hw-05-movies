@@ -6,7 +6,7 @@ export default function HomePage() {
   const [trandingMovie, setTrandingMovie] = useState([]);
 
   useEffect(() => {
-    fetchTrandingMovie().then(res => setTrandingMovie(res));
+    fetchTrandingMovie().then(setTrandingMovie);
   }, []);
 
   return (
