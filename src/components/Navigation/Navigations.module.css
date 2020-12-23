@@ -1,0 +1,11 @@
+.link {
+  color: #ffffff;
+}
+
+.activeLink {
+  color: red;
+}
+
+.link:not(:last-child) {
+  margin-right: 15px;
+}

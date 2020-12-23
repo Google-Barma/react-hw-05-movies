@@ -1,0 +1,13 @@
+@import-normalize;
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
