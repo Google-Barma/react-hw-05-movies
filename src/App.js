@@ -12,16 +12,16 @@ function App() {
         {/* <Route path="/" exact>
           <HomeView />
         </Route> */}
-        <Route path="/" exact component={HomeView} />
-        <Route path="/movies" component={SearchMoviesView} />
-        <Route path="/movies/:movieId" component={MovieDetailsView} />
         {/* <Route path="/movies">
           <SearchMoviesView />
         </Route> */}
-
         {/* <Route>
           <MovieDetailsView path="/movies/:movieId" />
         </Route> */}
+
+        <Route path="/" exact component={HomeView} />
+        <Route path="/movies" component={SearchMoviesView} />
+        <Route path="/movies/:movieId" component={MovieDetailsView} />
       </Switch>
     </>
   );
