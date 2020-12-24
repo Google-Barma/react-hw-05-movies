@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchTrandingMovie } from '../../services/tmdb-api';
 import MovieList from '../MovieList/MovieList';
 
-export default function HomePage() {
+export default function HomeView() {
   const [trandingMovie, setTrandingMovie] = useState([]);
 
   useEffect(() => {

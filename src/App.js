@@ -1,25 +1,27 @@
 import { Route, Switch } from 'react-router-dom';
-import HomePage from './components/Views/HomeView';
-import SearchMoviesPage from './components/Views/SearchMoviesView';
+import HomeView from './components/Views/HomeView';
+import SearchMoviesView from './components/Views/SearchMoviesView';
 import AppBar from './components/AppBar/AppBar';
-import MovieDetails from './components/Views/MovieDetailsView';
+import MovieDetailsView from './components/Views/MovieDetailsView';
 
 function App() {
   return (
     <>
       <AppBar />
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
+        {/* <Route path="/" exact>
+          <HomeView />
+        </Route> */}
+        <Route path="/" exact component={HomeView} />
+        <Route path="/movies" component={SearchMoviesView} />
+        <Route path="/movies/:movieId" component={MovieDetailsView} />
+        {/* <Route path="/movies">
+          <SearchMoviesView />
+        </Route> */}
 
-        <Route path="/movies" exact>
-          <SearchMoviesPage />
-        </Route>
-
-        <Route>
-          <MovieDetails path="/movies/:movieId" />
-        </Route>
+        {/* <Route>
+          <MovieDetailsView path="/movies/:movieId" />
+        </Route> */}
       </Switch>
     </>
   );

@@ -1,3 +1,3 @@
-export default function SearchMoviesPage() {
+export default function SearchMoviesView() {
   return <div>MoviesPage</div>;
 }
