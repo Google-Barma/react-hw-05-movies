@@ -11,7 +11,7 @@ export default function MovieList({ movies }) {
           <li className={s.item} key={movie.id}>
             <NavLink to={`/movies/${movie.id}`}>
               <div className={s.imageWrapper}>
-                <img src={posterPath} alt={movie.title} width="100" />
+                <img src={posterPath} alt={movie.title} width="186" />
               </div>
               <h3 className={s.title}>{movie.title}</h3>
             </NavLink>

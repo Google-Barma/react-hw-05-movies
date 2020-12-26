@@ -1,16 +1,26 @@
 .list {
+  max-width: 1280px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 16px;
+  justify-items: center;
+  align-items: center;
 }
 
 .item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .title {
   text-align: center;
+  font-size: 18px;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
 }
