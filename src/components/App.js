@@ -5,8 +5,14 @@ import AppBar from './AppBar/AppBar';
 import Container from './Layouts/Container';
 
 const HomeView = lazy(() => import('./Views/HomeView'));
-const SearchMoviesView = lazy(() => import('./Views/SearchMoviesView'));
-const MovieDetailsView = lazy(() => import('./Views/MovieDetailsView'));
+const SearchMoviesView = lazy(() =>
+  import('./Views/SearchMoviesView' /* webpackChunkName: "home-view" */),
+);
+const MovieDetailsView = lazy(() =>
+  import(
+    './Views/MovieDetailsView' /* webpackChunkName: "movie-details-view" */
+  ),
+);
 
 function App() {
   return (

@@ -11,11 +11,11 @@ import Loader from 'react-loader-spinner';
 import s from './MovieDetailsView.module.css';
 import { fetchMovieDetails } from '../../services/tmdb-api';
 import MovieDetails from '../MovieDetails/MovieDetails';
-// import Cast from '../Cast/Cast';
-// import Reviews from '../Reviews/Reviews';
 
-const Cast = lazy(() => import('../Cast/Cast'));
-const Reviews = lazy(() => import('../Reviews/Reviews'));
+const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
+const Reviews = lazy(() =>
+  import('../Reviews/Reviews' /* webpackChunkName: "reviews" */),
+);
 
 export default function MovieDetailsView() {
   const [movie, setMovie] = useState([]);
