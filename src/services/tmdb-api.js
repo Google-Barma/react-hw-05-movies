@@ -8,16 +8,18 @@ axios.defaults.params = { api_key: API_KEY, language: 'en-EN' };
 
 export async function fetchTrandingMovie(page = 1) {
   const {
+    data: { total_pages },
     data: { results },
   } = await axios.get(`/trending/movie/day?page=${page}`);
-  return results;
+  return [results, total_pages];
 }
 
 export async function fetchMovie(query, page = 1) {
   const {
+    data: { total_pages },
     data: { results },
   } = await axios.get(`/search/movie?query=${query}`);
-  return results;
+  return [results, total_pages];
 }
 
 export async function fetchMovieDetails(movieId) {

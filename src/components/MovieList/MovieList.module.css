@@ -4,6 +4,7 @@
   grid-gap: 16px;
   justify-items: center;
   align-items: center;
+  padding: 25px 0;
 }
 
 .item {

@@ -48,7 +48,7 @@ export default function MovieDetailsView() {
         </NavLink>
       </nav>
 
-      <Suspense fallback={<Loader timeout="10000" color="#ff0000" />}>
+      <Suspense fallback={<Loader timeout={10000} color="#ff0000" />}>
         <Switch>
           <Route path={`${url}/cast`}>
             <Cast movieId={movieId} />

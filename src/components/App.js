@@ -15,7 +15,7 @@ function App() {
         <AppBar />
 
         <Suspense
-          fallback={<Loader type="Rings" timeout="10000" color="#ff0000" />}
+          fallback={<Loader type="Rings" timeout={10000} color="#ff0000" />}
         >
           <Switch>
             <Route path="/" exact component={HomeView} />
