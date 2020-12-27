@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IoSearchCircleSharp } from 'react-icons/io5';
 import s from './SearchBar.module.css';
 import { fetchMovie } from '../../services/tmdb-api';
@@ -9,16 +9,22 @@ export default function SearchBar() {
   const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
 
-  const { totalPage, setPage, setTotalPage } = useTotalPage();
+  const { page, totalPage, setPage, setTotalPage } = useTotalPage();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetchMovie(value).then(([result, total_pages]) => {
+    setValue(e.target.value);
+  }
+
+  useEffect(() => {
+    if (!value) return;
+
+    fetchMovie(value, page).then(([result, total_pages]) => {
       setMovies(result);
       setTotalPage(total_pages);
     });
-  }
+  }, [setTotalPage, page, value]);
 
   return (
     <>
