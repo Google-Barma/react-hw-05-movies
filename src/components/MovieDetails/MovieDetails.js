@@ -19,9 +19,6 @@ export default function MovieDetails({
         <h2 className={s.movieTitle}>{title}</h2>
 
         <img className={s.image} src={posterUrl} alt={title} width="300" />
-        <a href={homepage} target="_blank" rel="noreferrer">
-          <HiLink />
-        </a>
       </div>
       <div className={s.description}>
         <h3 className={s.title}>Genres: </h3>
@@ -35,6 +32,9 @@ export default function MovieDetails({
         <p className={s.voteText}>
           tmbd: <span className={s.vote}>{vote_average}</span>
         </p>
+        <a className={s.link} href={homepage} target="_blank" rel="noreferrer">
+          <HiLink className={s.icon} />
+        </a>
       </div>
     </article>
   );

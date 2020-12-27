@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { lazy } from 'react';
 import {
   useParams,
   NavLink,
@@ -6,11 +7,15 @@ import {
   Route,
   useRouteMatch,
 } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import s from './MovieDetailsView.module.css';
 import { fetchMovieDetails } from '../../services/tmdb-api';
 import MovieDetails from '../MovieDetails/MovieDetails';
-import Cast from '../Cast/Cast';
-import Reviews from '../Reviews/Reviews';
+// import Cast from '../Cast/Cast';
+// import Reviews from '../Reviews/Reviews';
+
+const Cast = lazy(() => import('../Cast/Cast'));
+const Reviews = lazy(() => import('../Reviews/Reviews'));
 
 export default function MovieDetailsView() {
   const [movie, setMovie] = useState([]);
@@ -43,15 +48,17 @@ export default function MovieDetailsView() {
         </NavLink>
       </nav>
 
-      <Switch>
-        <Route path={`${url}/cast`}>
-          <Cast movieId={movieId} />
-        </Route>
+      <Suspense fallback={<Loader timeout="10000" color="#ff0000" />}>
+        <Switch>
+          <Route path={`${url}/cast`}>
+            <Cast movieId={movieId} />
+          </Route>
 
-        <Route path={`${url}/reviews`}>
-          <Reviews movieId={movieId} />
-        </Route>
-      </Switch>
+          <Route path={`${url}/reviews`}>
+            <Reviews movieId={movieId} />
+          </Route>
+        </Switch>
+      </Suspense>
     </>
   );
 }

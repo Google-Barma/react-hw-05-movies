@@ -31,6 +31,10 @@
   color: red;
 }
 
+.voteText {
+  margin-bottom: 25px;
+}
+
 .genresList {
   font-size: 14px;
   margin-bottom: 15px;
@@ -39,4 +43,12 @@
 .overview {
   font-size: 14px;
   margin-bottom: 30px;
+}
+
+.link:hover {
+  color: red;
+}
+
+.icon {
+  font-size: 35px;
 }
