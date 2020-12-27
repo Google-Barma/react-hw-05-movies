@@ -6,47 +6,51 @@ import { fetchMovie } from '../../services/tmdb-api';
 import MovieList from '../MovieList/MovieList';
 import useTotalPage from '../Hooks/useTotalPage';
 
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import useLoader from '../Hooks/useLoader';
+
 export default function SearchBar() {
   const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
 
   const { page, totalPage, setPage, setTotalPage } = useTotalPage();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    setValue(e.target.value);
-  }
+  const { isLoading, setIsLoading } = useLoader();
 
   useEffect(() => {
     if (!value) return;
 
-    fetchMovie(value, page).then(([result, total_pages]) => {
-      setMovies(result);
-      setTotalPage(total_pages);
-    });
-  }, [setTotalPage, page, value]);
+    setIsLoading(isLoading => !isLoading);
+
+    fetchMovie(value, page)
+      .then(([result, total_pages]) => {
+        setMovies(result);
+        setTotalPage(total_pages);
+      })
+      .finally(() => setIsLoading(isLoading => !isLoading));
+  }, [setTotalPage, page, value, setIsLoading]);
 
   return (
     <>
-      <form className={s.form} onSubmit={e => handleSubmit(e)}>
+      <div className={s.form}>
         <DebounceInput
           minLength={2}
           debounceTimeout={500}
           className={s.input}
-          placeholder="input your query"
+          placeholder={'input your query'}
           type="text"
           value={value}
           onChange={e => setValue(e.target.value)}
         />
 
-        <button className={s.button} disabled={!value} type="submit">
-          <IoSearchCircleSharp color="#ff0000" size="30" />
-        </button>
-      </form>
-
+        <IoSearchCircleSharp color="#ff0000" size="30" />
+      </div>
       {movies && (
-        <MovieList movies={movies} total={totalPage} onChangePage={setPage} />
+        <MovieList
+          movies={movies}
+          total={totalPage}
+          onChangePage={setPage}
+          loading={isLoading}
+        />
       )}
     </>
   );
