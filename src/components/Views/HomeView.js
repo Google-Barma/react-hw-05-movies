@@ -4,6 +4,7 @@ import MovieList from '../MovieList/MovieList';
 
 export default function HomeView() {
   const [trandingMovie, setTrandingMovie] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchTrandingMovie().then(setTrandingMovie);
