@@ -21,24 +21,27 @@ export default function MovieList({ movies, total, onChangePage }) {
           );
         })}
       </ul>
-      <div
-        style={{
-          backgroundColor: '#5b5b5b',
-          display: 'flex',
-          justifyContent: 'center',
-          borderRadius: '5px',
-        }}
-      >
-        <Pagination
-          count={total}
-          variant="outlined"
-          shape="rounded"
-          color="secondary"
-          onChange={(event, pages) => {
-            onChangePage(pages);
+
+      {total > 1 && (
+        <div
+          style={{
+            backgroundColor: '#5b5b5b',
+            display: 'flex',
+            justifyContent: 'center',
+            borderRadius: '5px',
           }}
-        />
-      </div>
+        >
+          <Pagination
+            count={total}
+            variant="outlined"
+            shape="rounded"
+            color="secondary"
+            onChange={(event, pages) => {
+              onChangePage(pages);
+            }}
+          />
+        </div>
+      )}
     </>
   );
 }
