@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { IoSearchCircleSharp } from 'react-icons/io5';
+import { DebounceInput } from 'react-debounce-input';
 import s from './SearchBar.module.css';
 import { fetchMovie } from '../../services/tmdb-api';
 import MovieList from '../MovieList/MovieList';
@@ -29,13 +30,22 @@ export default function SearchBar() {
   return (
     <>
       <form className={s.form} onSubmit={e => handleSubmit(e)}>
-        <input
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={500}
           className={s.input}
           placeholder="input your query"
           type="text"
           value={value}
           onChange={e => setValue(e.target.value)}
         />
+        {/* <input
+          className={s.input}
+          placeholder="input your query"
+          type="text"
+          value={value}
+          onChange={e => setValue(e.target.value)}
+        /> */}
         <button className={s.button} disabled={!value} type="submit">
           <IoSearchCircleSharp color="#ff0000" size="30" />
         </button>
