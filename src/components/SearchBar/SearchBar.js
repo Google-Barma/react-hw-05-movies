@@ -39,13 +39,7 @@ export default function SearchBar() {
           value={value}
           onChange={e => setValue(e.target.value)}
         />
-        {/* <input
-          className={s.input}
-          placeholder="input your query"
-          type="text"
-          value={value}
-          onChange={e => setValue(e.target.value)}
-        /> */}
+
         <button className={s.button} disabled={!value} type="submit">
           <IoSearchCircleSharp color="#ff0000" size="30" />
         </button>
