@@ -9,3 +9,7 @@
 .link:not(:last-child) {
   margin-right: 15px;
 }
+
+.nav {
+  padding: 20px 0;
+}

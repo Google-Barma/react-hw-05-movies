@@ -4,7 +4,7 @@ import s from './Navigations.module.css';
 
 export default function Navigations() {
   return (
-    <nav>
+    <nav className={s.nav}>
       <NavLink className={s.link} activeClassName={s.activeLink} to="/" exact>
         <ImHome />
       </NavLink>

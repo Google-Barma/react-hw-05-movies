@@ -6,7 +6,7 @@ import {
   Route,
   useRouteMatch,
 } from 'react-router-dom';
-import s from './MovieDetails.module.css';
+import s from './MovieDetailsView.module.css';
 import { fetchMovieDetails } from '../../services/tmdb-api';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import Cast from '../Cast/Cast';
@@ -20,18 +20,28 @@ export default function MovieDetailsView() {
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(setMovie);
-  }, []);
+  }, [movieId]);
 
   return (
     <>
       <MovieDetails {...movie} />
 
-      <NavLink to={`${url}/cast`} className={s.link}>
-        Cast
-      </NavLink>
-      <NavLink to={`${url}/reviews`} className={s.link}>
-        Reviews
-      </NavLink>
+      <nav className={s.nav}>
+        <NavLink
+          to={`${url}/cast`}
+          className={s.link}
+          activeClassName={s.active}
+        >
+          Cast
+        </NavLink>
+        <NavLink
+          to={`${url}/reviews`}
+          className={s.link}
+          activeClassName={s.active}
+        >
+          Reviews
+        </NavLink>
+      </nav>
 
       <Switch>
         <Route path={`${url}/cast`}>
