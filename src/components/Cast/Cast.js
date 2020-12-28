@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieCredits } from '../../services/tmdb-api';
-import { makeImagePath } from '../../functions/secondaryFunctions';
+import { makeImagePath } from '../../services/makeImagePath';
 import s from './Cast.module.css';
 
 export default function Cast({ movieId }) {

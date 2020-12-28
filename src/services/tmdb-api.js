@@ -9,8 +9,7 @@ axios.defaults.params = { api_key: API_KEY, language: 'en-EN' };
 export async function fetchTrandingMovie(page = 1) {
   try {
     const {
-      data: { total_pages },
-      data: { results },
+      data: { total_pages, results },
     } = await axios.get(`/trending/movie/day?page=${page}`);
     return [results, total_pages];
   } catch (error) {
@@ -22,8 +21,7 @@ export async function fetchTrandingMovie(page = 1) {
 export async function fetchMovie(query, page = 1) {
   try {
     const {
-      data: { total_pages },
-      data: { results },
+      data: { total_pages, results },
     } = await axios.get(`/search/movie?query=${query}&page=${page}`);
     return [results, total_pages];
   } catch (error) {

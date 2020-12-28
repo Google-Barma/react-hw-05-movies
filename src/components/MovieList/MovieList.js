@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 import s from './MovieList.module.css';
-import { makeImagePath } from '../../functions/secondaryFunctions';
+import { makeImagePath } from '../../services/makeImagePath';
 import Loader from 'react-loader-spinner';
 
 export default function MovieList({

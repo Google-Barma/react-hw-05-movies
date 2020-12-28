@@ -1,6 +1,6 @@
 import { HiLink } from 'react-icons/hi';
 import s from './MovieDetails.module.css';
-import { makeImagePath } from '../../functions/secondaryFunctions';
+import { makeImagePath } from '../../services/makeImagePath';
 
 export default function MovieDetails({
   title,
