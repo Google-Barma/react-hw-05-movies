@@ -4,7 +4,13 @@ import s from './MovieList.module.css';
 import { makeImagePath } from '../../functions/secondaryFunctions';
 import Loader from 'react-loader-spinner';
 
-export default function MovieList({ movies, total, onChangePage, loading }) {
+export default function MovieList({
+  movies,
+  total,
+  onChangePage,
+  loading,
+  currentPage,
+}) {
   return (
     <>
       {loading ? (
@@ -44,6 +50,7 @@ export default function MovieList({ movies, total, onChangePage, loading }) {
             onChange={(event, pages) => {
               onChangePage(pages);
             }}
+            page={currentPage}
           />
         </div>
       )}

@@ -4,7 +4,7 @@ import { DebounceInput } from 'react-debounce-input';
 import s from './SearchBar.module.css';
 import { fetchMovie } from '../../services/tmdb-api';
 import MovieList from '../MovieList/MovieList';
-import useTotalPage from '../Hooks/useTotalPage';
+import usePages from '../Hooks/usePages';
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import useLoader from '../Hooks/useLoader';
@@ -13,7 +13,7 @@ export default function SearchBar() {
   const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
 
-  const { page, totalPage, setPage, setTotalPage } = useTotalPage();
+  const { page, totalPage, setPage, setTotalPage } = usePages();
   const { isLoading, setIsLoading } = useLoader();
 
   useEffect(() => {
@@ -50,6 +50,7 @@ export default function SearchBar() {
           total={totalPage}
           onChangePage={setPage}
           loading={isLoading}
+          currentPage={page}
         />
       )}
     </>

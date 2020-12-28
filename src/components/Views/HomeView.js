@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { fetchTrandingMovie } from '../../services/tmdb-api';
 import MovieList from '../MovieList/MovieList';
-import useTotalPage from '../Hooks/useTotalPage';
+import usePages from '../Hooks/usePages';
 import useLoader from '../Hooks/useLoader';
 
 export default function HomeView() {
   const [trandingMovie, setTrandingMovie] = useState([]);
 
-  const { page, totalPage, setPage, setTotalPage } = useTotalPage();
+  const { page, totalPage, setPage, setTotalPage } = usePages();
   const { isLoading, setIsLoading } = useLoader();
 
   useEffect(() => {
@@ -31,6 +31,7 @@ export default function HomeView() {
           total={totalPage}
           onChangePage={setPage}
           loading={isLoading}
+          currentPage={page}
         />
       )}
     </>

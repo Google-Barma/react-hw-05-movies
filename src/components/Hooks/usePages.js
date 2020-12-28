@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useTotalPage() {
+export default function usePages() {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
