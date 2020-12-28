@@ -13,7 +13,7 @@ export default function SearchBar() {
   const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
 
-  const { page, totalPage, setPage, setTotalPage } = usePages();
+  const { page, totalPage, handleChangePage, setTotalPage } = usePages();
   const { isLoading, setIsLoading } = useLoader();
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function SearchBar() {
         <MovieList
           movies={movies}
           total={totalPage}
-          onChangePage={setPage}
+          onChangePage={handleChangePage}
           loading={isLoading}
           currentPage={page}
         />
