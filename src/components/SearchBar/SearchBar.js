@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { IoSearchCircleSharp } from 'react-icons/io5';
 import { DebounceInput } from 'react-debounce-input';
 import s from './SearchBar.module.css';
 import { fetchMovie } from '../../services/tmdb-api';
@@ -41,8 +40,6 @@ export default function SearchBar() {
           value={value}
           onChange={e => setValue(e.target.value)}
         />
-
-        <IoSearchCircleSharp color="#ff0000" size="30" />
       </div>
       {movies && (
         <MovieList

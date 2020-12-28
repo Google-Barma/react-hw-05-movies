@@ -7,9 +7,13 @@
 }
 
 .link:not(:last-child) {
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .nav {
   padding: 20px 0;
+}
+
+.search {
+  margin-left: 5px;
 }
