@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { fetchTrandingMovie } from '../../services/tmdb-api';
 import MovieList from '../MovieList/MovieList';
 import usePages from '../Hooks/usePages';
@@ -7,8 +8,17 @@ import useLoader from '../Hooks/useLoader';
 export default function HomeView() {
   const [trandingMovie, setTrandingMovie] = useState([]);
 
-  const { page, totalPage, setPage, setTotalPage } = usePages();
+  const { totalPage, setTotalPage } = usePages();
   const { isLoading, setIsLoading } = useLoader();
+
+  const history = useHistory();
+  const location = useLocation();
+
+  const page = Number(new URLSearchParams(location.search).get('page') ?? 1);
+
+  function handleChangePage(pageNumber) {
+    history.push({ ...location, search: `page=${pageNumber}` });
+  }
 
   useEffect(() => {
     setIsLoading(isLoading => !isLoading);
@@ -29,7 +39,7 @@ export default function HomeView() {
         <MovieList
           movies={trandingMovie}
           total={totalPage}
-          onChangePage={setPage}
+          onChangePage={handleChangePage}
           loading={isLoading}
           currentPage={page}
         />
