@@ -15,8 +15,8 @@ export default function Cast({ movieId }) {
       {actors.map(({ profile_path, name, id }) => {
         const imageUrl = makeImagePath(profile_path, 'w185');
         return (
-          <li key={id}>
-            <img src={imageUrl} alt={name} width="130" />
+          <li className={s.item} key={id}>
+            <img className={s.image} src={imageUrl} alt={name} width="130" />
             <h2 className={s.title}>{name}</h2>
           </li>
         );

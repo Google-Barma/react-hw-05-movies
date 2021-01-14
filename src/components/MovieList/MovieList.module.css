@@ -7,10 +7,6 @@
   --white: rgba(248, 255, 229, 1);
 }
 
-body {
-  background-color: #182028;
-}
-
 .list {
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
@@ -23,6 +19,7 @@ body {
   width: 100%;
   padding-bottom: 100%;
   margin-top: -50%;
+  position: relative;
 }
 
 .item:nth-child(2n) {
@@ -184,7 +181,7 @@ body {
 }
 @media (min-width: 450px) {
   .list {
-    margin: 150px 40px;
+    margin: 170px 40px 150px;
   }
 }
 @media (min-width: 600px) {

@@ -30,6 +30,7 @@ export default function MovieList({
                       width="186"
                     />
                   </div>
+                  {/* <h3 className={s.title}>{movie.title}</h3> */}
                 </NavLink>
               </li>
             );
