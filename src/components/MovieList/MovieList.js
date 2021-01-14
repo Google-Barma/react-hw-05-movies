@@ -23,9 +23,13 @@ export default function MovieList({
               <li className={s.item} key={movie.id}>
                 <NavLink to={`/movies/${movie.id}`}>
                   <div className={s.imageWrapper}>
-                    <img src={posterPath} alt={movie.title} width="186" />
+                    <img
+                      className={s.image}
+                      src={posterPath}
+                      alt={movie.title}
+                      width="186"
+                    />
                   </div>
-                  <h3 className={s.title}>{movie.title}</h3>
                 </NavLink>
               </li>
             );
@@ -36,10 +40,12 @@ export default function MovieList({
       {total > 1 && !loading && (
         <div
           style={{
-            backgroundColor: '#5b5b5b',
+            backgroundColor: '#3958A8',
             display: 'flex',
             justifyContent: 'center',
             borderRadius: '5px',
+            maxWidth: '400px',
+            margin: '0 auto',
           }}
         >
           <Pagination

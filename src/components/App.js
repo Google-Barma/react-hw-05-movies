@@ -19,7 +19,6 @@ function App() {
     <>
       <Container>
         <AppBar />
-
         <Suspense
           fallback={<Loader type="Rings" timeout={10000} color="#ff0000" />}
         >
