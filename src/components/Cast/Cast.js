@@ -12,15 +12,19 @@ export default function Cast({ movieId }) {
 
   return (
     <ul className={s.list}>
-      {actors.map(({ profile_path, name, id }) => {
-        const imageUrl = makeImagePath(profile_path, 'w185');
-        return (
-          <li className={s.item} key={id}>
-            <img className={s.image} src={imageUrl} alt={name} width="130" />
-            <h2 className={s.title}>{name}</h2>
-          </li>
-        );
-      })}
+      {actors.length > 0 ? (
+        actors.map(({ profile_path, name, id }) => {
+          const imageUrl = makeImagePath(profile_path, 'w185');
+          return (
+            <li className={s.item} key={id}>
+              <img className={s.image} src={imageUrl} alt={name} width="130" />
+              <h2 className={s.title}>{name}</h2>
+            </li>
+          );
+        })
+      ) : (
+        <p>no info</p>
+      )}
     </ul>
   );
 }

@@ -2,6 +2,34 @@ import { useState, useEffect } from 'react';
 import { fetchMovieReviews } from '../../services/tmdb-api';
 import s from './Reviews.module.css';
 
+function Review({ reviews }) {
+  const [showMore, setShowMore] = useState(false);
+  const changeReviewLength = content => content.slice(0, 300) + ' ...';
+  return (
+    <>
+      {reviews.length > 0 ? (
+        reviews.map(({ author, content, id }) => (
+          <li key={id} className={s.item}>
+            <h3 className={s.title}>Author: {author}</h3>
+            <p className={s.review}>
+              {!showMore ? changeReviewLength(content) : content}
+            </p>
+            <button
+              className={s.showMore}
+              onClick={() => setShowMore(!showMore)}
+              data-id={id}
+            >
+              {showMore ? 'less more' : 'show more'}
+            </button>
+          </li>
+        ))
+      ) : (
+        <p>No reviews</p>
+      )}
+    </>
+  );
+}
+
 export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([]);
 
@@ -11,16 +39,27 @@ export default function Reviews({ movieId }) {
 
   return (
     <ul>
-      {reviews ? (
+      <Review reviews={reviews} />
+      {/* {reviews.length > 0 ? (
         reviews.map(({ author, content, id }) => (
           <li key={id} className={s.item}>
             <h3 className={s.title}>Author: {author}</h3>
-            <p className={s.review}>{content}</p>
+            <p className={s.review}>
+              {!showMore
+                ? changeReviewLength(content)
+                : content}
+              <button
+                className={s.showMore}
+                onClick={() => setShowMore(!showMore)}
+              >
+                {showMore ? 'less more' : 'show more'}
+              </button>
+            </p>
           </li>
         ))
       ) : (
         <p>No reviews</p>
-      )}
+      )} */}
     </ul>
   );
 }
